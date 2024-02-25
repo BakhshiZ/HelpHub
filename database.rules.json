@@ -1,0 +1,12 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "victims": {
+      ".indexOn": "lastSeen"
+    },
+    "volunteers": {
+      ".indexOn": "lastSeen"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:tools="http://schemas.android.com/tools"
+4    package="expo.modules.helphubnearby" >
+5
+6    <uses-sdk android:minSdkVersion="23" />
+7
+8    <uses-permission android:name="android.permission.BLUETOOTH" />
+8-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:5:5-67
+8-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:5:22-65
+9    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+9-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:6:5-73
+9-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:6:22-71
+10    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+10-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:7:5-75
+10-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:7:22-73
+11    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+11-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:8:5-75
+11-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:8:22-73
+12    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+12-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:9:5-81
+12-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:9:22-78
+13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+13-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:10:5-78
+13-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:10:22-76
+14    <uses-permission
+14-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:11:5-105
+15        android:name="android.permission.BLUETOOTH_ADVERTISE"
+15-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:11:49-102
+16        android:minSdkVersion="31" />
+16-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:11:22-48
+17    <uses-permission
+17-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:12:5-103
+18        android:name="android.permission.BLUETOOTH_CONNECT"
+18-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:12:49-100
+19        android:minSdkVersion="31" />
+19-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:12:22-48
+20    <uses-permission
+20-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:13:5-100
+21        android:name="android.permission.BLUETOOTH_SCAN"
+21-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:13:49-97
+22        android:minSdkVersion="31" />
+22-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:13:22-48
+23    <uses-permission
+23-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:14:5-105
+24        android:name="android.permission.NEARBY_WIFI_DEVICES"
+24-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:14:49-102
+25        android:minSdkVersion="32" />
+25-->C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:14:22-48
+26,
+27
+28</manifest>

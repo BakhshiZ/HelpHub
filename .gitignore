@@ -1,0 +1,17 @@
+node_modules/
+.expo/
+.firebase/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+.env
+*.orig.*
+web-build/
+.envrc
+builds/
+.DS_Store
+.metro-health-check*

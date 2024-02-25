@@ -1,0 +1,9 @@
+{
+  "platforms": ["ios", "android", "web"],
+  "ios": {
+    "modules": ["HelphubNearbyConnectionsModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.helphubnearbyconnections.HelphubNearbyConnectionsModule"]
+  }
+}
