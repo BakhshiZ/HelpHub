@@ -1,3 +1,8 @@
+/**
+ * @file Advice_Screen.js
+ * @brief This file contains the implementation of the Advice Screen component.
+ */
+
 import React, { useState} from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, LogBox } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -5,9 +10,14 @@ import Carousel from 'react-native-snap-carousel';
 import { Image } from 'react-native';
 import { Audio } from 'expo-av';
 
-
+/**
+ * @brief Component for each advice box.
+ * @param item The advice item to be displayed.
+ */
 const AdviceBox = ({ item }) => {
+  // Ignore all logs to avoid clutter
   LogBox.ignoreAllLogs();
+  
   return (
     <View style={styles.adviceBox}>
       <View style={styles.extraView}>
@@ -18,19 +28,23 @@ const AdviceBox = ({ item }) => {
   );
 };
 
+/**
+ * @brief Main advice screen component.
+ */
 const Advice_Screen = () => {
+  // Navigation hook
   const navigation = useNavigation();
+  // State for sound and its playback status
   const [sound, setSound] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // Function to toggle play/pause of audio
   async function togglePlay() {
     if (isPlaying) {
-      console.log("Stopping Sound...");
       await sound.stopAsync();
       setIsPlaying(false);
     } else {
       if (!sound) {
-        console.log("Loading Sound...");
         const { sound: newSound } = await Audio.Sound.createAsync(
           require('@assets/SOS_Sound.mp3'),
           { shouldPlay: true, isLooping: true }
@@ -38,13 +52,13 @@ const Advice_Screen = () => {
         setSound(newSound);
         setIsPlaying(true);
       } else {
-        console.log("Playing Sound...");
         await sound.playAsync();
         setIsPlaying(true);
       }
     }
   }
 
+  // Data for advice items
   const advices = [
     {
       text: "Try not to shout randomly, shouting randomly can block dust and respiratory tract. Additionally, prolonged shouting causes loss of energy and hoarseness.",
@@ -55,7 +69,7 @@ const Advice_Screen = () => {
       image: require('@assets/CoverMouth.png'),
     },
     {
-      text: "Refrain from igniting anything flambable.",
+      text: "Refrain from igniting anything flammable.",
       image: require('@assets/NoFire.png'),
     },
     {
@@ -64,16 +78,20 @@ const Advice_Screen = () => {
     },
   ];
 
+  // Function to render each advice box
   const renderAdviceBox = ({ item, index }) => {
     return <AdviceBox item={item} index={index} />;
   };
 
-  const sliderWidth = 300; // Adjust this to be the same as the device's width if necessary
-  const itemWidth = 300; // Adjust the width as needed
-return (
-    <View style={styles.container}>
-      <Text style={styles.helpNotif}>Help is on the way!</Text>
+  // Dimensions for carousel items
+  const sliderWidth = 300;
+  const itemWidth = 300;
 
+  return (
+    <View style={styles.container}>
+      {/* Notification that help is on the way */}
+      <Text style={styles.helpNotif}>Help is on the way!</Text>
+      {/* Carousel to display advice items */}
       <Carousel
         data={advices}
         renderItem={renderAdviceBox}
@@ -84,7 +102,9 @@ return (
         autoplayDelay={1000}
         autoplayInterval={5000}
       />
+      {/* Buttons to exit and toggle audio */}
       <View style={styles.buttonContainer}>
+        {/* Button to exit screen */}
         <TouchableOpacity style={styles.exitButton} onPress={() => {
           if (isPlaying) {
             togglePlay();
@@ -93,6 +113,7 @@ return (
           }}>
           <Image style={styles.buttonImage} source={require('@assets/Exit.png')}/>
         </TouchableOpacity>
+        {/* Button to toggle audio */}
         <TouchableOpacity style={styles.warningButton} onPress={togglePlay}>
           <Image style={styles.buttonImage} source={require('@assets/Bell.png')}/>
         </TouchableOpacity>
@@ -101,6 +122,7 @@ return (
   );
 };
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -112,30 +134,27 @@ const styles = StyleSheet.create({
     aspectRatio: 1.5, 
     resizeMode: 'contain',
     top: 10,
-    width: '100%', // Adjust the width as needed
-    height: '100%', // Adjust the height as needed
-    marginBottom: 20, // Adjust the margin as needed
-    borderRadius: 10, // Optional for rounded corners
+    width: '100%',
+    height: '100%', 
+    marginBottom: 20, 
+    borderRadius: 10, 
   },
   helpNotif: {
     position: 'absolute',
-    top: 70, // Adjust the top position as needed
-    fontSize: 20, // Adjust the font size as needed
-    fontWeight: 'bold', // Adjust the font weight as needed
-    color: 'black', // Adjust the color as needed
-  },  
-  scrollView: {
-    // Adjust this as needed
+    top: 70,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'black',
   },
   extraView: {
-    width: 250, // Adjust the width as needed
+    width: 250,
     height: 250,
     marginBottom: 20,
   },
   adviceBox: {
     top: 150,
     left: 15,
-    width: 270, // Adjust the width as needed
+    width: 270,
     borderRadius:8,
     borderWidth: 1,
     borderColor: '#ddd',
@@ -145,14 +164,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   adviceImage: {
-    width: '100%', // Adjust the width as needed
-    height: '100%', // Adjust the height as needed
-    marginBottom: 20, // Adjust the margin as needed
-    borderRadius: 10, // Optional for rounded corners
+    width: '100%',
+    height: '100%',
+    marginBottom: 20,
+    borderRadius: 10,
   },
   adviceText: {
     textAlign: 'center',
-    // Add other styling as needed
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -163,16 +181,16 @@ const styles = StyleSheet.create({
     bottom: 50,
   },
   warningButton: {
-    width: 75, // Adjust the size as needed
-    height: 75, // Adjust the size as needed
-    backgroundColor: '#de3333', // Adjust the color as needed
+    width: 75,
+    height: 75,
+    backgroundColor: '#de3333',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
   },
   exitButton: {
-    width: 75, // Adjust the size as needed
-    height: 75, // Adjust the size as needed
+    width: 75,
+    height: 75,
     backgroundColor: '#7f65bf',
     justifyContent: 'center',
     alignItems: 'center',

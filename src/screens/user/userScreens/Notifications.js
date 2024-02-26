@@ -3,8 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity, FlatList, SafeAreaView } from
 
 // Mock data for notifications with date and time
 const initialNotifications = [
-  { id: '1', text: 'Your order has been shipped.', dateTime: 'Feb 8, 4:30 PM' },
-  { id: '2', text: 'Your payment was received.', dateTime: 'Feb 7, 3:10 PM' },
+  { id: '1', text: 'There was a magnitude 3.2 earthquake that originated 5km from you', dateTime: 'Feb 8, 16:30 CEST' },
+  { id: '2', text: 'There was a magnitude 5.2 earthquake that originated 1km from you', dateTime: 'Feb 3, 12:11 CEST' },
   // ... other notifications
 ];
 

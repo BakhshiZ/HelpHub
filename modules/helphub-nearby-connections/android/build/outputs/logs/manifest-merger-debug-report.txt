@@ -1,14 +1,14 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml:1:1-2:12
-INJECTED from F:\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml:1:1-2:12
+ADDED from F:\ResQMe_2.0\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml:1:1-2:12
+INJECTED from F:\ResQMe_2.0\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml:1:1-2:12
 	package
-		INJECTED from F:\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml
+		INJECTED from F:\ResQMe_2.0\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml
 uses-sdk
-INJECTED from F:\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from F:\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml
-INJECTED from F:\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml
+INJECTED from F:\ResQMe_2.0\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from F:\ResQMe_2.0\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml
+INJECTED from F:\ResQMe_2.0\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from F:\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml
+		INJECTED from F:\ResQMe_2.0\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from F:\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml
+		INJECTED from F:\ResQMe_2.0\HelpHub\modules\helphub-nearby-connections\android\src\main\AndroidManifest.xml
