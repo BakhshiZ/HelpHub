@@ -1,66 +1,66 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:2:1-17:12
-INJECTED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:2:1-17:12
+ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:2:1-17:12
+INJECTED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:2:1-17:12
 	package
-		INJECTED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:3:5-51
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:3:5-51
 	xmlns:android
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.BLUETOOTH
-ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:5:5-67
+ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:5:5-67
 	android:name
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:5:22-65
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:5:22-65
 uses-permission#android.permission.BLUETOOTH_ADMIN
-ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:6:5-73
+ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:6:5-73
 	android:name
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:6:22-71
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:6:22-71
 uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:7:5-75
+ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:7:5-75
 	android:name
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:7:22-73
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:7:22-73
 uses-permission#android.permission.CHANGE_WIFI_STATE
-ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:8:5-75
+ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:8:5-75
 	android:name
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:8:22-73
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:8:22-73
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:9:5-81
+ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:9:5-81
 	android:name
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:9:22-78
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:9:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:10:5-78
+ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:10:5-78
 	android:name
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:10:22-76
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:10:22-76
 uses-permission#android.permission.BLUETOOTH_ADVERTISE
-ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:11:5-105
+ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:11:5-105
 	android:minSdkVersion
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:11:22-48
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:11:22-48
 	android:name
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:11:49-102
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:11:49-102
 uses-permission#android.permission.BLUETOOTH_CONNECT
-ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:12:5-103
+ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:12:5-103
 	android:minSdkVersion
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:12:22-48
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:12:22-48
 	android:name
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:12:49-100
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:12:49-100
 uses-permission#android.permission.BLUETOOTH_SCAN
-ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:13:5-100
+ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:13:5-100
 	android:minSdkVersion
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:13:22-48
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:13:22-48
 	android:name
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:13:49-97
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:13:49-97
 uses-permission#android.permission.NEARBY_WIFI_DEVICES
-ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:14:5-105
+ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:14:5-105
 	android:minSdkVersion
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:14:22-48
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:14:22-48
 	android:name
-		ADDED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:14:49-102
+		ADDED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml:14:49-102
 uses-sdk
-INJECTED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml
-INJECTED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml
+INJECTED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml
+INJECTED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from F:\HelpHub\modules\helphub-nearby\android\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\enesy\Documents\webprojects\helphub\modules\helphub-nearby\android\src\main\AndroidManifest.xml
