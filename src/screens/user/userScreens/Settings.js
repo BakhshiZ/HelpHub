@@ -35,7 +35,8 @@ const Settings = () => {
     { label: 'Spanish', value: 'es' },
     // ... add other languages here
   ];
-
+  
+  /* Different settings that user can change */
   return (
     <View style={styles.container}>
       <View style={styles.section}>

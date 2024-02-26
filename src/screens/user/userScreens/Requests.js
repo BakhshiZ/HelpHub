@@ -40,13 +40,13 @@ const RequestItem = ({ username, distance, requestText, timestamp }) => {
  * @brief Component for rendering the list of requests.
  */
 const RequestsPage = () => {
-  // This would be your data fetched from your backend or state management
+  // Data that will be fetched from backend
   const requestsData = [
-    // Example data structure
+    // Sample data
     {
-      username: 'User123',
+      username: 'Sarah',
       distance: '2 km away',
-      requestText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+      requestText: 'Requesting water',
       timestamp: '1hr ago',
     },
     // More requests...

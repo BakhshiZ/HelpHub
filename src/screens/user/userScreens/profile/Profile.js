@@ -1,3 +1,8 @@
+/**
+ * @file Profile.js
+ * @brief Contains the Profile component to display and edit user profile information.
+ */
+
 import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, View, Text, ScrollView, TouchableOpacity, Image, TextInput } from 'react-native';
 import { AccIdContext } from '../../../../Contexts';
@@ -8,7 +13,12 @@ import UploadImage from './UploadImage';
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
 
+/**
+ * @brief Profile component to display and edit user profile information.
+ * @returns {JSX.Element} Profile component
+ */
 const Profile = () => {
+  // State variables
   const { AccId } = useContext(AccIdContext);
   const [userData, setUserData] = useState(null);
   const [userMedData, setUserMedData] = useState(null);
@@ -18,10 +28,12 @@ const Profile = () => {
   const [editedMedicalData, setEditedMedicalData] = useState({});
   const navigation = useNavigation();
 
+  // Fetch user data on component mount
   useEffect(() => {
     GetUserData();
   }, []);
 
+  // Function to fetch user data
   const GetUserData = async () => {
     const userMedDoc = doc(db, "usersMedicalInfo", AccId);
     const userMedProfile = await getDoc(userMedDoc);
@@ -36,6 +48,7 @@ const Profile = () => {
     setEditedMedicalData(userMedData);
   }
 
+  // Function to handle personal data editing
   const handleEditPersonal = async () => {
     if (isEditingPersonal) {
       // Save edited personal data
@@ -44,6 +57,7 @@ const Profile = () => {
     setIsEditingPersonal(!isEditingPersonal);
   }
 
+  // Function to handle medical data editing
   const handleEditMedical = async () => {
     if (isEditingMedical) {
       // Save edited medical data
@@ -52,14 +66,17 @@ const Profile = () => {
     setIsEditingMedical(!isEditingMedical);
   }
 
+  // Function to handle changes in personal data
   const handleChangePersonalData = (key, value) => {
     setEditedPersonalData(prevState => ({ ...prevState, [key]: value }));
   }
 
+  // Function to handle changes in medical data
   const handleChangeMedicalData = (key, value) => {
     setEditedMedicalData(prevState => ({ ...prevState, [key]: value }));
   }
 
+  // Function to handle user logout
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -70,10 +87,12 @@ const Profile = () => {
     }
   };
 
+  // Render loading indicator if user data is not yet available
   if (!userData) {
     return <Text>Loading...</Text>;
   }
 
+  // Render the profile component
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -82,6 +101,7 @@ const Profile = () => {
         </View>
       </View>
 
+      {/* Personal Information Section */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>PERSONAL INFORMATION</Text>
         <TouchableOpacity style={styles.button} onPress={handleEditPersonal}>
@@ -130,10 +150,10 @@ const Profile = () => {
         </View>
       </View>
 
+      {/* Medical Information Section */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>MEDICAL INFORMATION</Text>
         <TouchableOpacity style={styles.button} onPress={handleEditMedical}>
-          {/* <Text style={styles.buttonText}>{isEditingMedical ? "Save" : "Edit"}</Text> */}
           {isEditingMedical ? (
               <Text style={styles.buttonText}>Save</Text>
             ) : (
@@ -143,33 +163,30 @@ const Profile = () => {
       </View>
 
       <View style={styles.infoContainer}>
-        
-      <View style={styles.infoRow}>
-        <Text style={styles.label}>Blood Type:</Text>
-        <View style={[styles.input, styles.pickerContainer]}>
-          {isEditingMedical ? (
-            <Picker
-              selectedValue={editedMedicalData.BloodType}
-              style={[styles.picker, { height: 50, width: '100%' }]} // Apply picker style
-              onValueChange={(itemValue, itemIndex) =>
-                handleChangeMedicalData('BloodType', itemValue)
-              }>
-              <Picker.Item label="A+" value="A+" />
-              <Picker.Item label="A-" value="A-" />
-              <Picker.Item label="B+" value="B+" />
-              <Picker.Item label="B-" value="B-" />
-              <Picker.Item label="AB+" value="AB+" />
-              <Picker.Item label="AB-" value="AB-" />
-              <Picker.Item label="O+" value="O+" />
-              <Picker.Item label="O-" value="O-" />
-            </Picker>
-          ) : (
-            <Text style={{ color: 'gray', opacity: 0.7 }}>{editedMedicalData.BloodType}</Text>
-          )}
+        <View style={styles.infoRow}>
+          <Text style={styles.label}>Blood Type:</Text>
+          <View style={[styles.input, styles.pickerContainer]}>
+            {isEditingMedical ? (
+              <Picker
+                selectedValue={editedMedicalData.BloodType}
+                style={[styles.picker, { height: 50, width: '100%' }]} // Apply picker style
+                onValueChange={(itemValue, itemIndex) =>
+                  handleChangeMedicalData('BloodType', itemValue)
+                }>
+                <Picker.Item label="A+" value="A+" />
+                <Picker.Item label="A-" value="A-" />
+                <Picker.Item label="B+" value="B+" />
+                <Picker.Item label="B-" value="B-" />
+                <Picker.Item label="AB+" value="AB+" />
+                <Picker.Item label="AB-" value="AB-" />
+                <Picker.Item label="O+" value="O+" />
+                <Picker.Item label="O-" value="O-" />
+              </Picker>
+            ) : (
+              <Text style={{ color: 'gray', opacity: 0.7 }}>{editedMedicalData.BloodType}</Text>
+            )}
+          </View>
         </View>
-      </View>
-
-
 
         <View style={styles.infoRow}>
           <Text style={styles.label}>Emergency Contact Name:</Text>
@@ -230,10 +247,11 @@ const Profile = () => {
           />
         </View>
       </View>
-
+      
+      {/* Logout button */}
       <TouchableOpacity 
-      style={styles.logoutButton}
-      onPress={handleLogout}>
+        style={styles.logoutButton}
+        onPress={handleLogout}>
         <Text style={styles.logoutButtonText}>LOGOUT</Text>
       </TouchableOpacity>
 
@@ -241,6 +259,7 @@ const Profile = () => {
   );
 };
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
