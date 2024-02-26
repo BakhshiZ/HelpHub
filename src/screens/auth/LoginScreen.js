@@ -1,3 +1,9 @@
+/**
+ * @file LoginScreen.js
+ * @brief Screen component for user login.
+ * @details This component provides a user interface for logging in with email and password credentials.
+ */
+
 import React, { useState, useContext } from 'react';
 import { Text, TouchableOpacity, StyleSheet, SafeAreaView, Image } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
@@ -7,27 +13,38 @@ import { doc, getDoc } from 'firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { AccModeContext, AccIdContext } from '../../Contexts';
 
+/**
+ * @function LoginScreen
+ * @description Functional component for the login screen.
+ * @returns {JSX.Element} JSX element representing the login screen.
+ */
 function LoginScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setErrorMsg] = useState(null);
-  const { setAccMode } = useContext(AccModeContext);
-  const { setAccId } = useContext(AccIdContext);
-  const navigation = useNavigation();
+  const [email, setEmail] = useState(''); /**< State for storing user email */
+  const [password, setPassword] = useState(''); /**< State for storing user password */
+  const [error, setErrorMsg] = useState(null); /**< State for storing error message */
+  const { setAccMode } = useContext(AccModeContext); /**< Context for accessing and setting user account mode */
+  const { setAccId } = useContext(AccIdContext); /**< Context for accessing and setting user account ID */
+  const navigation = useNavigation(); /**< Navigation hook for navigating between screens */
 
+  /**
+   * @function handleLogin
+   * @description Handles the login process when the user clicks the login button.
+   */
   const handleLogin = async () => {
     try {
+      // Sign in the user with email and password credentials
       const userCreds = await signInWithEmailAndPassword(auth, email, password);
       const userDoc = doc(db, "users", userCreds.user.uid);
       const userProfile = await getDoc(userDoc);
 
       if (userProfile.exists()) {
         const userData = userProfile.data();
-        setAccMode(userData.mode); // Acc Mode is set here to be used in contexts
-        setAccId(userCreds.user.uid); // Same deal for user id
+        setAccMode(userData.mode); // Set the user account mode
+        setAccId(userCreds.user.uid); // Set the user account ID
 
         console.log("LOGIN ID: " + String(userCreds.user.uid));
 
+        // Navigate to appropriate screen based on user account mode
         if (userData.mode === "victim") {
           navigation.navigate('MainApp', { screen: 'Slider_Screen' });
         } else {
@@ -37,7 +54,7 @@ function LoginScreen() {
         console.log("No such document!");
       }
     } catch (error) {
-      setErrorMsg("Error. Invalid credentials");
+      setErrorMsg("Error. Invalid credentials"); // Set error message if login fails
     }
   };
 
@@ -55,6 +72,7 @@ function LoginScreen() {
   );
 }
 
+// Styles for the login screen component
 const styles = StyleSheet.create({
   container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   input: { width: '80%', marginBottom: 10 },
