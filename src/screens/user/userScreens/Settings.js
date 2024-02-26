@@ -1,8 +1,16 @@
+/**
+ * @file Settings.js
+ * @brief This file contains the implementation of the Settings component.
+ */
+
 import React from 'react';
 import { View, Text, Switch, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import legal from '../../../assets/legal.json';
 
+/**
+ * @brief Settings component.
+ */
 const Settings = () => {
   const [darkMode, setDarkMode] = React.useState(false);
   const [pushNotifications, setPushNotifications] = React.useState(false);
@@ -10,7 +18,11 @@ const Settings = () => {
   const [vibration, setVibration] = React.useState(false);
   const [language, setLanguage] = React.useState(null);
 
-  showInfo = (msg) =>
+  /**
+   * @brief Display legal information in an alert.
+   * @param msg The legal information message.
+   */
+  const showInfo = (msg) =>
     Alert.alert('Legal Information', msg, [
       {
         text: 'OK', 
@@ -90,22 +102,14 @@ const Settings = () => {
   );
 };
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
     backgroundColor: '#fff',
   },
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    position: "relative",
-    left: 106,
-    top: 20,
-    marginBottom: 20,
-  },
   section: {
-    top: 0,
     marginBottom: 20,
   },
   label: {

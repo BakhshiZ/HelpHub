@@ -1,6 +1,18 @@
+/**
+ * @file RequestsPage.js
+ * @brief This file contains the implementation of the Requests Page component.
+ */
+
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
+/**
+ * @brief Component for displaying individual request item.
+ * @param username The username of the requester.
+ * @param distance The distance of the requester from the user.
+ * @param requestText The text of the request.
+ * @param timestamp The timestamp of the request.
+ */
 const RequestItem = ({ username, distance, requestText, timestamp }) => {
   return (
     <View style={styles.requestItem}>
@@ -24,6 +36,9 @@ const RequestItem = ({ username, distance, requestText, timestamp }) => {
   );
 };
 
+/**
+ * @brief Component for rendering the list of requests.
+ */
 const RequestsPage = () => {
   // This would be your data fetched from your backend or state management
   const requestsData = [
@@ -54,6 +69,7 @@ const RequestsPage = () => {
   );
 };
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,

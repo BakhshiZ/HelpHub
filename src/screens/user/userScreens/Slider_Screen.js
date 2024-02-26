@@ -1,3 +1,8 @@
+/**
+ * @file Slider_Screen.js
+ * @brief This file contains the implementation of the Slider_Screen component.
+ */
+
 import React, { useContext, useRef } from 'react';
 import { View, StyleSheet, Text, Animated, PanResponder } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -6,12 +11,17 @@ import { db } from '@firebaseConfig';
 import { doc, setDoc } from 'firebase/firestore';
 import { AccIdContext } from '../../../Contexts';
 
-
-function Slider_Screen() {
+/**
+ * @brief Slider_Screen component.
+ */
+export default function Slider_Screen() {
   const { AccId } = useContext(AccIdContext);
   const navigation = useNavigation();
   const translateX = useRef(new Animated.Value(0)).current;
 
+  /** 
+   * @brief panResponder for handling user's touches
+   */
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,
@@ -38,6 +48,11 @@ function Slider_Screen() {
     })
   ).current;  
 
+  /**
+   * @function updateLocationInFirestore
+   * @brief update user's location in firestore database
+   * @returns {void}
+   */
   async function updateLocationInFirestore() {
     const { status } = await Location.requestForegroundPermissionsAsync();
 
@@ -82,6 +97,7 @@ function Slider_Screen() {
   );
 }
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -121,4 +137,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Slider_Screen;

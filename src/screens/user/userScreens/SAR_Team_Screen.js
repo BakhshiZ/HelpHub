@@ -1,3 +1,8 @@
+/**
+ * @file SAR_Screen.js
+ * @brief This file contains the implementation of the Search and Rescue Screen component.
+ */
+
 import React, { useState, useEffect, useRef } from 'react';
 import { View, StyleSheet, TouchableOpacity, Dimensions, Image, Alert, Text } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
@@ -7,6 +12,9 @@ import { db } from '@firebaseConfig';
 
 const { width, height } = Dimensions.get('window');
 
+/**
+ * @brief Search and Rescue Screen component.
+ */
 const SAR_Screen = ({ navigation }) => {
   const [userData, setUserData] = useState([]);
   const [location, setLocation] = useState(null);
@@ -51,6 +59,10 @@ const SAR_Screen = ({ navigation }) => {
     fetchData();
   }, []);
 
+  /**
+   * @brief Handle press event on a marker.
+   * @param id The ID of the user associated with the marker.
+   */
   const handleMarkerPress = async (id) => {
     try {
       const medicalSnap = await getDoc(doc(db, "usersMedicalInfo", id));
@@ -68,11 +80,19 @@ const SAR_Screen = ({ navigation }) => {
     }
   }
 
+  /**
+   * @brief Handle press event on the map.
+   */
   const handleMapPress = () => {
     setSelectedUserBloodType(null);
     setIsMarkerSelected(false);
   }
 
+  /**
+   * @brief Calculate the time difference between the current time and a timestamp.
+   * @param timestamp The timestamp to calculate the difference from.
+   * @returns An object containing the difference in days, hours, and minutes.
+   */
   const getTimeDifference = (timestamp) => {
     const currentTime = new Date().getTime();
     const timestampTime = timestamp.toMillis();
@@ -85,6 +105,11 @@ const SAR_Screen = ({ navigation }) => {
     return { days: daysDifference, hours: hoursDifference, minutes: minutesDifference };
   };
 
+  /**
+   * @brief Get the name of a user from another database using their ID.
+   * @param id The ID of the user.
+   * @returns The name of the user.
+   */
   const getNameFromOtherDatabase = async (id) => {
     try {
       const docSnap = await getDoc(doc(db, "users", id));
@@ -135,6 +160,7 @@ const SAR_Screen = ({ navigation }) => {
   );
 };
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -143,20 +169,6 @@ const styles = StyleSheet.create({
   map: {
     width: width,
     height: height,
-  },
-  fab: {
-    position: 'absolute',
-    right: 10,
-    bottom: 115,
-    backgroundColor: '#0066ff',
-    padding: 15,
-    borderRadius: 30,
-    elevation: 2,
-  },
-  fabIcon: {
-    width: 25,
-    height: 25,
-    resizeMode: 'contain',
   },
   bloodTypeContainer: {
     position: 'absolute',

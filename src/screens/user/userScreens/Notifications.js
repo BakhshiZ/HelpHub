@@ -1,3 +1,8 @@
+/**
+ * @file NotificationsScreen.js
+ * @brief This file contains the implementation of the Notifications Screen component.
+ */
+
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
 
@@ -8,6 +13,12 @@ const initialNotifications = [
   // ... other notifications
 ];
 
+/**
+ * @brief Individual notification item component.
+ * @param text The text content of the notification.
+ * @param dateTime The date and time of the notification.
+ * @param onDismiss Function to call when the notification is dismissed.
+ */
 const NotificationItem = ({ text, dateTime, onDismiss }) => (
   <View style={styles.notificationItem}>
     <View style={styles.notificationContent}>
@@ -20,13 +31,18 @@ const NotificationItem = ({ text, dateTime, onDismiss }) => (
   </View>
 );
 
+/**
+ * @brief Notifications screen component.
+ */
 const NotificationsScreen = () => {
   const [notifications, setNotifications] = useState(initialNotifications);
 
+  // Function to dismiss a single notification
   const dismissNotification = (id) => {
     setNotifications(notifications.filter(notification => notification.id !== id));
   };
 
+  // Function to dismiss all notifications
   const dismissAllNotifications = () => {
     setNotifications([]);
   };
@@ -55,6 +71,7 @@ const NotificationsScreen = () => {
   );
 };
 
+// Styles
 const styles = StyleSheet.create({
   container: {
     top: 20,
