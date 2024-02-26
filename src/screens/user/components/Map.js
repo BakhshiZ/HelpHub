@@ -1,32 +1,35 @@
-import { useState } from "react";
+/**
+ * @file Map.js
+ * @brief Contains the Map component for displaying a clustered map with various map types.
+ */
+
+import React, { useState } from "react";
 import { PROVIDER_GOOGLE } from "react-native-maps";
 import MapView from "react-native-map-clustering";
 import { StyleSheet, View } from "react-native";
-import {
-  IconButton,
-  Modal,
-  Divider,
-  RadioButton,
-  Button,
-  Text,
-} from "react-native-paper";
+import { IconButton, Modal, Divider, RadioButton, Button, Text } from "react-native-paper";
 import { useStoreState } from "easy-peasy";
 
-export default function Map({
-  children,
-  mapRef,
-  layoutAnimation,
-  refreshData,
-}) {
+/**
+ * @brief Map component for displaying a clustered map with various map types.
+ * @param {Object} props - Props for the Map component.
+ * @param {JSX.Element} props.children - Child components to be rendered on the map.
+ * @param {RefObject} props.mapRef - Reference to the map component.
+ * @param {Function} props.layoutAnimation - Function to handle layout animation.
+ * @param {Function} props.refreshData - Function to refresh map data.
+ * @returns {JSX.Element} Map component
+ */
+export default function Map({ children, mapRef, layoutAnimation, refreshData }) {
+  // State variables
   const [visible, setVisible] = useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-
   const [mapType, setMapType] = useState("standard");
   const { location } = useStoreState((s) => s);
 
   return (
     <View>
+      {/* Render clustered map */}
       <MapView
         clusterColor="#673ab7"
         initialRegion={{
@@ -46,6 +49,7 @@ export default function Map({
       >
         {children}
       </MapView>
+      {/* Button to toggle map layers modal */}
       <IconButton
         icon="layers"
         style={[styles.actionButton, styles.layerButton]}
@@ -54,6 +58,7 @@ export default function Map({
         containerColor="white"
         onPress={showModal}
       />
+      {/* Button to refresh map data */}
       <IconButton
         icon="refresh"
         style={[styles.actionButton, styles.refreshButton]}
@@ -62,6 +67,7 @@ export default function Map({
         containerColor="white"
         onPress={refreshData}
       />
+      {/* Modal to change map type */}
       <Modal
         visible={visible}
         onDismiss={hideModal}
@@ -69,6 +75,7 @@ export default function Map({
       >
         <Text variant="headlineSmall">Change Map Type</Text>
         <Divider />
+        {/* Radio buttons to select map type */}
         <View
           style={{
             flexDirection: "row",
@@ -104,6 +111,7 @@ export default function Map({
             />
           </View>
         </View>
+        {/* Button to save map type selection */}
         <Button
           icon="check"
           style={{
@@ -118,7 +126,7 @@ export default function Map({
   );
 }
 
-/// credit to: https://stackoverflow.com/a/53868257
+// Styles for the Map component
 const styles = StyleSheet.create({
   map: {
     width: "100%",
