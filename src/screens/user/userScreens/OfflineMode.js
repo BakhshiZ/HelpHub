@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { View, StyleSheet, Alert, FlatList, Pressable, TextInput } from "react-native";
 import { Text } from "react-native-paper";
 import { Menu, MenuOptions, MenuOption, MenuTrigger } from "react-native-popup-menu";
+import { Button } from "../components/Button";
 import Dialog from "react-native-dialog";
 
 import * as Nearby from "../../../../modules/helphub-nearby/index";
@@ -352,10 +353,10 @@ export default function OfflineMode() {
                     </FlatList>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <NewButton primary={!discovering}
+                    <Button primary={!discovering}
                         onPress={(discovering ? stopSearch : startSearch)}>
                         <Text>Search</Text>
-                    </NewButton>
+                    </Button>
                 </View>
                 <Text style={{color: "white"}}>Username: {selected}</Text>
                 <TextInput

@@ -8,7 +8,7 @@ import { View, StyleSheet, Alert, FlatList, Pressable, TextInput } from "react-n
  * childen: any         -> A react prop for supporting children components, such as text
  * onPress: function    -> Function to call on pressing the button.
  *  */
-function Button({primary = true, children = null, onPress = null}) {
+export default function Button({primary = true, children = null, onPress = null}) {
     return (
       <Pressable
         onPressOut={onPress}
