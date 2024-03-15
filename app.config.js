@@ -48,6 +48,12 @@ module.exports = {
           locationAlwaysAndWhenInUsePermission: "Allow $(PRODUCT_NAME) to use your location.",
         }
       ],
+      [
+        "expo-font",
+        {
+          "fonts": ["src/assets/OpenSans.ttf"]
+        }
+      ]
     ],
     extra: {
       eas: {
