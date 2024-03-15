@@ -22,13 +22,14 @@ export default function OfflineModeConnect({searching, setSearching}) {
     
     return (
         <View style={styles.container}>
-            <Text>lol</Text>
+            <Text style={{fontFamily: "OpenSans", color: "white"}}>lol</Text>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
+        justifyContent: "center",
         flex: 1,
         backgroundColor: Colors.background,
     }
