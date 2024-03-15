@@ -9,7 +9,7 @@ import * as Colors from "../styles/Colors";
  * childen: any         -> A react prop for supporting children components, such as text
  * onPress: function    -> Function to call on pressing the button.
  *  */
-export default  function Button({primary = true, children = null, onPress = null}) {
+export default function Button({primary = true, children = null, onPress = null}) {
     return (
       <Pressable
         onPressOut={onPress}
