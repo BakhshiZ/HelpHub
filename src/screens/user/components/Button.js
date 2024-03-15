@@ -1,4 +1,5 @@
 import { View, StyleSheet, Alert, FlatList, Pressable, TextInput } from "react-native";
+import * as Colors from "../styles/Colors";
 
 /**
  * Button Component
@@ -8,7 +9,7 @@ import { View, StyleSheet, Alert, FlatList, Pressable, TextInput } from "react-n
  * childen: any         -> A react prop for supporting children components, such as text
  * onPress: function    -> Function to call on pressing the button.
  *  */
-export default function Button({primary = true, children = null, onPress = null}) {
+export default  function Button({primary = true, children = null, onPress = null}) {
     return (
       <Pressable
         onPressOut={onPress}
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderRadius: 10,
         borderWidth: 0,
-        backgroundColor: "#8814B1",
+        backgroundColor: Colors.purple,
         elevation: 5,
     },
     buttonPressed: {
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderRadius: 10,
         borderWidth: 0,
-        backgroundColor: "#7B6682",
+        backgroundColor: Colors.darkgray,
         elevation: 5,
     },
     buttonSecondary: {
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderRadius: 10,
         borderWidth: 0,
-        backgroundColor: "#EA2C87",
+        backgroundColor: Colors.magenta,
         elevation: 5,
     },
 });

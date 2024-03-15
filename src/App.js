@@ -21,7 +21,7 @@ import Settings from './screens/user/userScreens/Settings';
 import NetInfo from "@react-native-community/netinfo";
 import { MenuProvider } from "react-native-popup-menu";
 import { AccModeContext, AccIdContext } from './Contexts';
-import { OfflineMode } from './screens/user/userScreens';
+import { OfflineMode, OfflineModeMain} from './screens/user/userScreens';
 
 const AuthStack = createStackNavigator();
 
@@ -159,13 +159,7 @@ function App() {
         <AccIdContext.Provider value={{ AccId, setAccId }}>
           <NavigationContainer>
             <RootStack.Navigator screenOptions={{ headerShown: false }}>
-              {internetReachable ? 
-                ( <>
-                    <RootStack.Screen name="Auth" component={AuthStackScreen} />
-                    <RootStack.Screen name="MainApp" component={MainTabScreen} />
-                    <RootStack.Screen name="Advice_Screen" component={Advice_Screen} />
-                  </>) :
-                (<RootStack.Screen name="OfflineMode" component={OfflineMode} />)}
+              <RootStack.Screen name="OfflineMode" component={OfflineModeMain} />
             </RootStack.Navigator>
           </NavigationContainer>
         </AccIdContext.Provider>

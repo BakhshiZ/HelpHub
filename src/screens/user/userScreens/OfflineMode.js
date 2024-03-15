@@ -5,43 +5,10 @@ import { useEffect, useState } from "react";
 import { View, StyleSheet, Alert, FlatList, Pressable, TextInput } from "react-native";
 import { Text } from "react-native-paper";
 import { Menu, MenuOptions, MenuOption, MenuTrigger } from "react-native-popup-menu";
-import { Button } from "../components/Button";
+import Button from "../components/Button";
 import Dialog from "react-native-dialog";
 
 import * as Nearby from "../../../../modules/helphub-nearby/index";
-
-/**
- * Button Component
- * Can become active (secondary) or inactive (primary).
- * 
- * primary: boolean     -> whether the button is a primary or a secondary button
- * childen: any         -> A react prop for supporting children components, such as text
- * onPress: function    -> Function to call on pressing the button.
- *  */
-function NewButton({primary = true, children = null, onPress = null}) {
-    return (
-      <Pressable
-        onPressOut={onPress}
-        style={({pressed}) => {
-          if (pressed) {
-            return styles.buttonPressed;
-          }
-          else {
-            if (primary) {
-              return styles.buttonPrimary;
-            }
-  
-            else {
-              return styles.buttonSecondary;
-            }
-          }
-        }}>
-          {children}
-      </Pressable>
-    );
-
-}
-
 
 /**
  * Message Dialog
