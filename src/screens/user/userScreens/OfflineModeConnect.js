@@ -80,7 +80,6 @@ const NearbyDevice = ({key, endpointName, endpointId, userName, connectedDevices
                             (   
                                 <>
                                     <MenuOption text="Disconnect" onSelect={disconnectFromEndpoint}/>
-                                    <MenuOption text="Message" onSelect={openMessagingPanel}/>
                                 </>
                             )
                     }

@@ -29,6 +29,9 @@ export default function OfflineModeMain() {
     
         // Selected device (i.e to connect)
         [selected, setSelected] = useState(null);
+
+        // Messages
+        [messages, setMessages] = useState(new Map());
     
         // Adds a device to connectedDevices ONLY IF it is not there
         function setConnectedDevicesUnique(endpoint) {
@@ -100,7 +103,8 @@ export default function OfflineModeMain() {
                     case 0:
                         Alert.alert("Connection Successful", "You successfully connected to endpoint " + event.endpointId, [{text: "OK"}]);
                         setConnectedDevicesUnique(event.endpointId);
-                        setDiscoveredDevices(discoveredDevices.filter(function(e) {return e !== event.endpointId}))
+                        setDiscoveredDevices(discoveredDevices.filter(function(e) {return e !== event.endpointId}));
+                        setMessages(new Map(messages.set(endpointId, [])));
                         break;
                     case 15:
                         Alert.alert("Connection Failed", "Timeout while trying to connect. Error code: " + event.status, [{text: "OK"}]);
@@ -132,6 +136,7 @@ export default function OfflineModeMain() {
                 // Informs a payload (message) is received
                 const onPayloadReceived = Nearby.addPayloadReceivedListener((event) => {
                     Alert.alert("Received Message", "From: " + event.endpointId + "\n" + event.message);
+                    setMessages(new Map(messages.set(event.endpointId, [...messages.get(event.endpointId), event.message])));
                 })
             })
         }, [])
@@ -172,13 +177,14 @@ export default function OfflineModeMain() {
 
             <Tab.Screen 
                 name="OMMessage"
-                component={OfflineModeMessage} 
                 options={{
                     tabBarIcon: ({focused}) => (
                         <Icon name="chat" size={35} color={focused ? Colors.magenta : Colors.snow}/>
                     )
                 }}
-            />
+            >
+                {() => (<OfflineModeMessage messages={messages} setMessages={setMessages}/>)}
+            </Tab.Screen>
 
         </Tab.Navigator>
     )
