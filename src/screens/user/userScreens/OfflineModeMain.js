@@ -17,7 +17,7 @@ export default function OfflineModeMain() {
         [discoveredDevices, setDiscoveredDevices] = useState(null);
 
         // Connected devices
-        [connectedDevices, setConnectedDevices] = useState([null]);
+        [connectedDevices, setConnectedDevices] = useState([]);
     
         // Username
         [userName, setUserName] = useState("HelphubUser");
@@ -53,6 +53,7 @@ export default function OfflineModeMain() {
                 // Get currently discovered devices
                 setDiscoveredDevices(Nearby.getDiscoveredEndpoints());
                 console.log(discoveredDevices);
+                console.log(connectedDevices);
             });
     
             // Informs when a new connection is initiated (by user or someone else)
@@ -64,7 +65,8 @@ export default function OfflineModeMain() {
                         [
                             {
                                 text: "Accept",
-                                onPress: () => {Nearby.acceptConnection(event.endpointId); setConnectedDevicesUnique([...connectedDevices, event.endpointId]);},
+                                onPress: () => {Nearby.acceptConnection(event.endpointId); setConnectedDevicesUnique(event.endpointId); 
+                                    console.log(connectedDevices);},
                             },
                             {
                                 text: "Reject",
@@ -80,7 +82,7 @@ export default function OfflineModeMain() {
                         [
                             {
                                 text: "Accept",
-                                onPress: () => {Nearby.acceptConnection(event.endpointId); setConnectedDevicesUnique([...connectedDevices, event.endpointId]);},
+                                onPress: () => {Nearby.acceptConnection(event.endpointId); setConnectedDevicesUnique(event.endpointId);},
                             },
                             {
                                 text: "Reject",
@@ -97,7 +99,8 @@ export default function OfflineModeMain() {
                 switch (event.status) {
                     case 0:
                         Alert.alert("Connection Successful", "You successfully connected to endpoint " + event.endpointId, [{text: "OK"}]);
-                        setConnectedDevices([...connectedDevices, event.endpointId]);
+                        setConnectedDevicesUnique(event.endpointId);
+                        setDiscoveredDevices(discoveredDevices.filter(function(e) {return e !== event.endpointId}))
                         break;
                     case 15:
                         Alert.alert("Connection Failed", "Timeout while trying to connect. Error code: " + event.status, [{text: "OK"}]);
@@ -151,7 +154,10 @@ export default function OfflineModeMain() {
                     )
                 }}
             >
-                {() => (<OfflineModeConnect />)}
+                {() => (<OfflineModeConnect searching={searching} setSearching={setSearching} 
+                                            userName={userName} setUserName={setUserName}
+                                            connectedDevices={connectedDevices} discoveredDevices={discoveredDevices}
+                                            setConnectedDevices={setConnectedDevicesUnique}/>)}
             </Tab.Screen>
 
             <Tab.Screen 

@@ -36,8 +36,8 @@ export default function Button({primary = true, children = null, onPress = null}
 
 const styles = StyleSheet.create({
     buttonPrimary: {
-        width: 150,
-        height: 50,
+        width: 130,
+        height: 40,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 10,
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     buttonPressed: {
-        width: 150,
-        height: 50,
+        width: 130,
+        height: 40,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 10,
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     buttonSecondary: {
-        width: 150,
-        height: 50,
+        width: 130,
+        height: 40,
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 10,
