@@ -6,9 +6,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import OfflineModeMap from './OfflineModeMap';
 import OfflineModeConnect from './OfflineModeConnect';
 import Icon from "@expo/vector-icons/MaterialIcons"
-import OfflineModeMessage from './OfflineModeMessage';
 
 import * as Nearby from "../../../../modules/helphub-nearby";
+import OfflineModeMessageScreen from './OfflineModeMessage';
 
 const Tab = createBottomTabNavigator();
 
@@ -104,7 +104,7 @@ export default function OfflineModeMain() {
                         Alert.alert("Connection Successful", "You successfully connected to endpoint " + event.endpointId, [{text: "OK"}]);
                         setConnectedDevicesUnique(event.endpointId);
                         setDiscoveredDevices(discoveredDevices.filter(function(e) {return e !== event.endpointId}));
-                        setMessages(new Map(messages.set(endpointId, [])));
+                        setMessages(new Map(messages.set(event.endpointId, [])));
                         break;
                     case 15:
                         Alert.alert("Connection Failed", "Timeout while trying to connect. Error code: " + event.status, [{text: "OK"}]);
@@ -136,7 +136,7 @@ export default function OfflineModeMain() {
                 // Informs a payload (message) is received
                 const onPayloadReceived = Nearby.addPayloadReceivedListener((event) => {
                     Alert.alert("Received Message", "From: " + event.endpointId + "\n" + event.message);
-                    setMessages(new Map(messages.set(event.endpointId, [...messages.get(event.endpointId), event.message])));
+                    setMessages(new Map(messages.set(event.endpointId, [...messages.get(event.endpointId), {from: event.endpointId, message: event.message}])));
                 })
             })
         }, [])
@@ -148,7 +148,7 @@ export default function OfflineModeMain() {
                 headerShown: false,
                 tabBarShowLabel: false,
             }}
-            initialRouteName='OMMap'
+            initialRouteName='OMConnections'
         >
 
             <Tab.Screen 
@@ -166,16 +166,6 @@ export default function OfflineModeMain() {
             </Tab.Screen>
 
             <Tab.Screen 
-                name="OMMap"
-                component={OfflineModeMap} 
-                options={{
-                    tabBarIcon: ({focused}) => (
-                        <Icon name="pin-drop" size={50} color={focused ? Colors.magenta : Colors.snow}/>
-                    )
-                }}
-            />
-
-            <Tab.Screen 
                 name="OMMessage"
                 options={{
                     tabBarIcon: ({focused}) => (
@@ -183,7 +173,7 @@ export default function OfflineModeMain() {
                     )
                 }}
             >
-                {() => (<OfflineModeMessage messages={messages} setMessages={setMessages}/>)}
+                {() => (<OfflineModeMessageScreen messages={messages} setMessages={setMessages}/>)}
             </Tab.Screen>
 
         </Tab.Navigator>

@@ -2,17 +2,30 @@ import { View, StyleSheet, Alert, FlatList, Pressable, TextInput } from "react-n
 import { Text } from "react-native-paper";
 import * as Colors from "../styles/Colors"
 import { ScrollView } from "react-native-gesture-handler";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import OfflineMode from "./OfflineMode";
+import OfflineModeDM from "./OfflineModeDM";
+import { useNavigation } from "@react-navigation/native";
 
 function MessageItem({endpointId, lastMessage}) {
+    const navigation = useNavigation();
+
+    function goToMessageDetails() {
+        navigation.navigate("OfflineModeDM", {endpointId: endpointId})
+    }
+
     return (
-        <View style={styles.messageItem}>
-            <Text style={styles.messageItemId}>{endpointId}</Text>
-            <Text style={styles.messageItemLast}>{(lastMessage === null) ? "No messages yet.": lastMessage}</Text>
-        </View>
+        <Pressable android_ripple={{color: Colors.background, foreground: true}}
+                    onPressOut={goToMessageDetails}>
+            <View style={styles.messageItem}>
+                <Text style={styles.messageItemId}>{endpointId}</Text>
+                <Text style={styles.messageItemLast}>{(lastMessage === null) ? "No messages yet.": lastMessage.message}</Text>
+            </View>
+        </Pressable>
     );
 } 
 
-export default function OfflineModeMessage({messages, setMessages}) {
+function OfflineModeMessage({messages, setMessages}) {
     // Gets last message, returns null if it does not exist.
     function getLastMessage(endpointId) {
         const endpointMessages = messages.get(endpointId);
@@ -31,10 +44,26 @@ export default function OfflineModeMessage({messages, setMessages}) {
                     renderItem={({item}) => (
                         <MessageItem endpointId={item} lastMessage={getLastMessage(item)}/>
                     )}
+                    data={[...messages.keys()]}
                 />
             </View>
         </View>
     );
+}
+
+const MessageStack = createNativeStackNavigator();
+
+export default function OfflineModeMessageScreen({messages, setMessages}) {
+    return (
+    <MessageStack.Navigator initialRouteName="OfflineModeMessage" screenOptions={{headerShown: false}}>
+        <MessageStack.Screen name="OfflineModeMessage" options={{animation: "fade"}}> 
+            {() => (<OfflineModeMessage messages={messages} setMessages={setMessages}/>)}
+        </MessageStack.Screen>
+        <MessageStack.Screen name="OfflineModeDM" options={{animation: "fade"}}>
+            {() => (<OfflineModeDM messages={messages} setMessages={setMessages}/>)}
+        </MessageStack.Screen>
+    </MessageStack.Navigator>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -49,7 +78,6 @@ const styles = StyleSheet.create({
     },
     messagesList: {
         height: "auto",
-        backgroundColor: Colors.containerBackground,
         width: "100%",
     },
     header: {
@@ -62,16 +90,19 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         height: "auto",
         width: "100%",
-        padding: 20,
+        padding: 15,
         backgroundColor: Colors.containerBackground,
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-start",
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: Colors.gray,
     },
     messageItemId: {
         fontFamily: "OpenSans",
         fontSize: 14,
-        color: Colors.purple,
+        color: Colors.snow,
         fontWeight: 900,
     },
     messageItemLast: {
